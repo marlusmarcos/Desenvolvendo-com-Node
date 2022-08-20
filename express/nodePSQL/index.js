@@ -8,6 +8,32 @@ app.engine ('handlebars', exphbs.engine());
 
 app.set ('view engine', 'handlebars');
 
+app.use (express.static('public'));
+
+app.use (
+    express.urlencoded ({
+        extends: true,
+    })
+)
+
+
+app.use (express.json())
+
+app.post ('/usuario/create', (req,res) => {
+    const nome = req.body.nome;
+    const idade= req.body.idade;
+
+    const sql = `INSERT INTO pessoa (nome, idade) VALUES ('${nome}', '${idade}')`;
+
+    conn.query (sql, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        res.redirect ('/');
+    })
+
+})
+
 app.get ('/', (req, res) => {
 
     res.render('home');
