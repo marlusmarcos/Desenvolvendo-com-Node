@@ -7,9 +7,10 @@ h1 {
 
 }
 
-.form {
+.form-main {
     width: 450 px;
-    margin: auto;
+    margin: 0 auto;
+    align-items: center;
 }
 
 .form-control {
