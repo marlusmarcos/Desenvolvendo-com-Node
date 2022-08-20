@@ -1,0 +1,8 @@
+<h1>pessoas cadastradas</h1>
+<div class="pessoa-conatiner">
+    {{#each pessoas}}
+    <div>
+        #{{this.id_pessoa}} - <span>{{this.nome}}</span> - {{this.idade}}
+    </div>
+    {{/each}}
+</div>

@@ -40,6 +40,23 @@ app.get ('/', (req, res) => {
 
 })
 
+app.get ('/pessoa', (req, res) => {
+    const sql = "SELECT * FROM pessoa;";
+
+    conn.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+        }
+        const pessoas = data.rows;
+        console.log(pessoas);
+        res.render('books', {pessoas});
+    })
+    // console.log(pessoas);
+    // res.render('books', {pessoas});
+
+})
+
+
 const conn = new Client ({
     user: 'postgres',
     host: 'localhost',
