@@ -29,7 +29,7 @@ app.post ('/usuario/create', (req,res) => {
         if (err) {
             console.log(err);
         }
-        res.redirect ('/');
+        res.redirect ('/pessoa');
     })
 
 })
@@ -50,6 +50,7 @@ app.get ('/pessoa', (req, res) => {
         const pessoas = data.rows;
         console.log(pessoas);
         res.render('books', {pessoas});
+        
     })
     // console.log(pessoas);
     // res.render('books', {pessoas});
