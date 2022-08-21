@@ -25,3 +25,9 @@ h1 {
 .form-control input {
     padding: 15px;
 }
+
+.container {    
+    display: flex;
+    flex-wrap: wrap;
+    
+}

@@ -26,6 +26,16 @@ app.get ('/users/create', (req, res) => {
     res.render ('adduser');
 })
 
+app.get ('/users/:id', async (req, res) => {
+    const id = req.params.id;
+    const user =  await User.findOne({
+        raw: true,
+        where : {id : id}
+    }
+    )
+    res.render('userview', user);
+})
+
 app.post ('/users/create', async (req,res) => {
     const name = req.body.name;
     const ocuppation = req.body.ocuppation;
