@@ -36,6 +36,40 @@ app.get ('/users/:id', async (req, res) => {
     res.render('userview', user);
 })
 
+app.get ('/users/edit/:id', async (req,res) => {
+    const id = req.params.id;
+    const user = await User.findOne ({
+        raw: true,
+        where: {id : id}
+    })
+    res.render('editusers', user);
+})
+
+app.post ('/users/edit', async (req,res) => {
+    const id = req.body.id;
+    const name = req.body.name;
+    const ocuppation = req.body.ocuppation;
+    let newsLatter = req.body.newsLatter;
+    if (newsLatter === 'on') {
+        newsLatter = true 
+    } else {
+        newsLatter = false;
+       }
+    const datauser = {
+        id,
+        name,
+        ocuppation,
+        newsLatter
+    }   
+    await User.update (datauser, {
+        where: {
+            id : id
+        }
+    }
+    );
+    res.redirect('/');
+})
+
 app.post ('/users/create', async (req,res) => {
     const name = req.body.name;
     const ocuppation = req.body.ocuppation;
