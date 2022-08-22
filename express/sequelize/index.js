@@ -6,6 +6,7 @@ const User = require('./models/User');
 const port = 3000;
 const app = express ();
 const user = require ('./models/User');
+const Address = require('./models/Address');
 
 
 app.engine ('handlebars', exphbs.engine());
@@ -93,7 +94,10 @@ app.get ('/', async (req,res) => {
     res.render('home', {users : users});
 }) 
 
-conn.sync().then (() => {
+conn.
+sync().
+//sync({force : true}).
+then (() => {
     app.listen (3000, (err) => {
         if (err) {
             console.log(err);
